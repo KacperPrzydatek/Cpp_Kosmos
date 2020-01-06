@@ -1,5 +1,8 @@
 #include <vector>
-#include "Person.h"
+//#include "Person.h"
+//#include "Woman.h"
+#include "Man.h"
+
 
 
 class Planet;
@@ -13,6 +16,7 @@ class SpaceShip
 	void ShowWithoutCrew();
 	void ShowCrew();
 	//SpaceShip(std::string name, std::string currentPlanet, std::string currentSystem);
+	//void SpaceShip::AddPerson(std::string gender,float mass, float height, std::string name);
 public:
 	SpaceShip(std::string name, std::string currentPlanet, std::string currentSystem);
 	SpaceShip(const SpaceShip& ship);
@@ -22,6 +26,10 @@ public:
 	SpaceShip();
 	~SpaceShip();
 	//void Show();
-	void AddPerson(float mass, float height, std::string name);
-	void AddPerson(Person person);
+	void AddMan(float mass, float height, std::string name);
+	void AddWoman(float mass, float height, std::string name);
+	void AddMan(Man person);
+	void AddMan(Person person);
+	void AddWoman(Woman person);
+	void AddWoman(Person person);
 };

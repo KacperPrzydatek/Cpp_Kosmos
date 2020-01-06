@@ -110,7 +110,11 @@ void SolarSystem::AddSpaceShipToPlanet(int indexPlanet, std::string name)
 	_planetList[indexPlanet].AddShip(name);
 }
 
-void SolarSystem::AddCrewToShipInSpace(int indexShip, float mass, float height, std::string name)
+void SolarSystem::AddManToShipInSpace(int indexShip, float mass, float height, std::string name)
+{
+	_spaceShipList[indexShip].AddMan(mass, height, name);
+}
+void SolarSystem::AddWomanToShipInSpace(int indexShip, float mass, float height, std::string name)
 {
 	_spaceShipList[indexShip].AddPerson(mass, height, name);
 }

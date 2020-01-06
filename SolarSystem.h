@@ -14,7 +14,6 @@ class SolarSystem
 	
 	//
 public:
-	void ShowLemons();
 	SolarSystem(std::string name);
 	~SolarSystem();
 	
@@ -25,7 +24,8 @@ public:
 	void AddSpaceShipToSpace(std::string name);
 	void CopySpaceShip(int indexShip);
 	void AddSpaceShipToPlanet(int indexPlanet, std::string name);
-	void AddCrewToShipInSpace(int indexShip, float mass, float height, std::string name);
+	void AddManToShipInSpace(int indexShip, float mass, float height, std::string name);
+	void AddWomanToShipInSpace(int indexShip, float mass, float height, std::string name);
 	void AddCrewToShipOnPlanet(int indexPlanet, int indexShip, float mass, float height, std::string name);
 	void AddPersonToPlanet(int indexPlanet, float mass, float height, std::string name);
 	//Funkcje przenoszenia: osob statek<->planeta && statkow: planeta<->space

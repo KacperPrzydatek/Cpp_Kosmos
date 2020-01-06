@@ -23,7 +23,8 @@ public:
 	void Show();
 	void MoveToShip(int shipIndex, int personIndex);
 	void MoveFromShip(int shipIndex, int crewIndex);
-	void AddPerson(float mass, float height, std::string name);
+	void AddMan(float mass, float height, std::string name);
+	void AddWoman(float mass, float height, std::string name);
 	void AddShip(std::string name);
 	//void ShowShips();
 
