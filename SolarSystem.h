@@ -26,15 +26,17 @@ public:
 	void AddSpaceShipToPlanet(int indexPlanet, std::string name);
 	void AddManToShipInSpace(int indexShip, float mass, float height, std::string name);
 	void AddWomanToShipInSpace(int indexShip, float mass, float height, std::string name);
-	void AddCrewToShipOnPlanet(int indexPlanet, int indexShip, float mass, float height, std::string name);
-	void AddPersonToPlanet(int indexPlanet, float mass, float height, std::string name);
+	void AddManCrewToShipOnPlanet(int indexPlanet, int indexShip, float mass, float height, std::string name);
+	void AddWomanCrewToShipOnPlanet(int indexPlanet, int indexShip, float mass, float height, std::string name);
+	void AddManToPlanet(int indexPlanet, float mass, float height, std::string name);
+	void AddWomanToPlanet(int indexPlanet, float mass, float height, std::string name);
 	//Funkcje przenoszenia: osob statek<->planeta && statkow: planeta<->space
 	void PlanetMovePersonToShip(int planetIndex, int shipIndex, int personIndex);
 	void PlanetMoveCrewFromShip(int planetIndex, int shipIndex, int crewIndex);
 	void MoveShipToPlanet(int planetIndex, int shipIndex);
 	void MoveShipToSpace(int planetIndex, int shipIndex);
 	//Funkcje plikow
-	void ZapiszDoPliku(char* plikTxt);
-	void WczytajZPliku(char* plikTxt, int maxDlLinii = 50);
+/*	void ZapiszDoPliku(char* plikTxt);
+	void WczytajZPliku(char* plikTxt, int maxDlLinii = 50);*/
 	
 };

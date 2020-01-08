@@ -116,17 +116,25 @@ void SolarSystem::AddManToShipInSpace(int indexShip, float mass, float height, s
 }
 void SolarSystem::AddWomanToShipInSpace(int indexShip, float mass, float height, std::string name)
 {
-	_spaceShipList[indexShip].AddPerson(mass, height, name);
+	_spaceShipList[indexShip].AddWoman(mass, height, name);
 }
 
-void SolarSystem::AddPersonToPlanet(int indexPlanet, float mass, float height, std::string name)
+void SolarSystem::AddManToPlanet(int indexPlanet, float mass, float height, std::string name)
 {
-	_planetList[indexPlanet].AddPerson(mass, height, name);
+	_planetList[indexPlanet].AddMan(mass, height, name);
+}
+void SolarSystem::AddWomanToPlanet(int indexPlanet, float mass, float height, std::string name)
+{
+	_planetList[indexPlanet].AddWoman(mass, height, name);
 }
 
-void SolarSystem::AddCrewToShipOnPlanet(int indexPlanet, int indexShip, float mass, float height, std::string name)
+void SolarSystem::AddManCrewToShipOnPlanet(int indexPlanet, int indexShip, float mass, float height, std::string name)
 {
-	_planetList[indexPlanet]._SpacePort[indexShip].AddPerson(mass, height, name);
+	_planetList[indexPlanet]._SpacePort[indexShip].AddMan(mass, height, name);
+}
+void SolarSystem::AddWomanCrewToShipOnPlanet(int indexPlanet, int indexShip, float mass, float height, std::string name)
+{
+	_planetList[indexPlanet]._SpacePort[indexShip].AddWoman(mass, height, name);
 }
 
 void SolarSystem::PlanetMovePersonToShip(int planetIndex, int shipIndex, int personIndex)
@@ -153,7 +161,7 @@ void SolarSystem::MoveShipToSpace(int planetIndex, int shipIndex)
 	_planetList[planetIndex]._SpacePort.erase(_planetList[planetIndex]._SpacePort.begin() + shipIndex);
 }
 
-void SolarSystem::ZapiszDoPliku(char* plikTxt)
+/*void SolarSystem::ZapiszDoPliku(char* plikTxt)
 {
 	std::cout << "ZAPIS DO PLIKU" << std::endl;
 	std::ofstream save(plikTxt);
@@ -226,9 +234,6 @@ void SolarSystem::WczytajZPliku(char* plikTxt, int maxDlLini)
 		{
 			load >> tmp;
 			if (tmp == "___") break;
-			/*tmpShip._name = tmp;
-			tmpShip._currentPlanet = _planetList[counter]._name;
-			tmpShip._currentSystem = _name;*/
 			_planetList[counter]._SpacePort.push_back(SpaceShip(tmp, _planetList[counter]._name, _name));
 			while (1)
 			{
@@ -276,4 +281,4 @@ void SolarSystem::WczytajZPliku(char* plikTxt, int maxDlLini)
 		++acounter;
 	}
 	load.close();
-}
+}*/

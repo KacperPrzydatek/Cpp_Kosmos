@@ -21,8 +21,6 @@ public:
 	void CheckGender();
 };
 
-#include "Person.h"
-
 class Woman : public Person
 {
 	float _mass;

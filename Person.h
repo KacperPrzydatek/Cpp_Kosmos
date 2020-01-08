@@ -1,6 +1,8 @@
+#pragma once
 #include <iostream>
 #include <string>
 #include "DEBUG.h"
+
 
 class Planet;
 class SpaceShip;

@@ -1,5 +1,3 @@
-#include <iostream>
-#include <string>
 #include <deque>
 #include <memory>
 #include "SpaceShip.h"
