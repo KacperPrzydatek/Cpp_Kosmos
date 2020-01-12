@@ -19,5 +19,5 @@ public:
 	friend SolarSystem;
 	friend SpaceShip;
 
-	void CheckGender();
+	virtual void CheckGender() override;
 };

@@ -33,8 +33,10 @@ SpaceShip::~SpaceShip()
 
 void SpaceShip::AddMan(float mass, float height, std::string name)
 {
-	Person tmp(mass, height, name, _name, _currentPlanet, _currentSystem);
+	Man tmp(mass, height, name, _name, _currentPlanet, _currentSystem);
 	_Crew.push_back(tmp);
+	tmp.CheckGender();
+	_Crew.back().CheckGender();
 }
 void SpaceShip::AddWoman(float mass, float height, std::string name)
 {
@@ -49,10 +51,6 @@ void SpaceShip::AddMan(Man person)
 void SpaceShip::AddWoman(Woman person)
 {
 	AddWoman(person._mass, person._height, person._name);
-}
-void SpaceShip::AddMan(Man person)
-{
-	AddMan(person._mass, person._height, person._name);
 }
 
 void SpaceShip::AddMan(Person person)

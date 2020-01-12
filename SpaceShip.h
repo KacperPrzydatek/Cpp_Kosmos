@@ -1,6 +1,6 @@
 #include <vector>
-//#include "Person.h"
-//#include "Woman.h"
+#include "Person.h"
+#include "Woman.h"
 #include "Man.h"
 
 
@@ -10,6 +10,7 @@ class SolarSystem;
 class SpaceShip
 {
 	std::string _name;
+	//std::vector<std::unique_ptr<Person>> _Crew;
 	std::vector<Person> _Crew;
 	std::string _currentPlanet;
 	std::string _currentSystem;
