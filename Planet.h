@@ -5,7 +5,7 @@ class SolarSystem;
 class Planet
 {
 	std::string _name;
-	std::deque<Person> _Populity;
+	std::deque<std::shared_ptr<Person>> _Populity;
 	std::deque<SpaceShip> _SpacePort;
 	std::string _currentSystem;
 	void ShowWithoutShipsAndPopulation();

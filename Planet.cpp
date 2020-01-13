@@ -17,20 +17,21 @@ Planet::Planet(const Planet& planet)
 	int tmp = 0;
 	for (auto& it : planet._Populity)
 	{
-		if (it._gender == "woman")
-			AddWoman(it._mass, it._height, it._name);
-		else if (it._gender == "man")
-			AddMan(it._mass, it._height, it._name);
+		
+		if (it->_gender == "woman")
+			AddWoman(it->_mass, it->_height, it->_name);
+		else if (it->_gender == "man")
+			AddMan(it->_mass, it->_height, it->_name);
 	}
 	for (auto& it : planet._SpacePort)
 	{
 		AddShip(it._name);
 		for (auto& i : it._Crew)
 		{
-			if (i._gender == "woman")
-				_SpacePort[tmp].AddWoman(i._mass, i._height, i._name);
-			else if (i._gender == "man")
-				_SpacePort[tmp].AddMan(i._mass, i._height, i._name);
+			if (i->_gender == "woman")
+				_SpacePort[tmp].AddWoman(i->_mass, i->_height, i->_name);
+			else if (i->_gender == "man")
+				_SpacePort[tmp].AddMan(i->_mass, i->_height, i->_name);
 		}
 		++tmp;
 	}
@@ -92,19 +93,24 @@ void Planet::ShowPopulation()
 	{
 		std::cout << _name<<std::endl;
 		std::cout << " " << std::endl;
-		std::cout << it;
+		std::cout << (*it);
+		std::cout << it->_mass;
+		//std::cout << it->_height;
 	}
 }
 
 void Planet::AddMan(float mass, float height, std::string name)
 {
 	Man tmp(mass, height, name, "OutOf", _name, _currentSystem);
-	_Populity.push_back(tmp);
+	//std::make_shared<Man>(tmp);
+	//std::cout << mass;
+	_Populity.push_back(std::make_shared<Person>(tmp));
+	//std::cout<<_Populity[_Populity.size() - 1]->_gender;
 }
 void Planet::AddWoman(float mass, float height, std::string name)
 {
 	Woman tmp(mass, height, name, "OutOf", _name, _currentSystem);
-	_Populity.push_back(tmp);
+	_Populity.push_back(std::make_shared<Person>(tmp));
 }
 
 void Planet::AddShip(std::string name)
@@ -133,10 +139,10 @@ void Planet::MoveToShip(int shipIndex, int personIndex)
 {
 	if (_SpacePort.size() > shipIndex)
 	{
-		if (_Populity[personIndex]._gender == "woman")
-			_SpacePort[_SpacePort.size() - 1].AddWoman(_Populity[personIndex]);
-		else if (_Populity[personIndex]._gender == "man")
-		_SpacePort[_SpacePort.size()-1].AddMan(_Populity[personIndex]);
+		if (_Populity[personIndex]->_gender == "woman")
+			_SpacePort[_SpacePort.size() - 1].AddWoman(*_Populity[personIndex]);
+		else if (_Populity[personIndex]->_gender == "man")
+		_SpacePort[_SpacePort.size()-1].AddMan(*_Populity[personIndex]);
 
 		_Populity.erase(_Populity.begin()+personIndex);
 	}
@@ -147,7 +153,7 @@ void Planet::MoveFromShip(int shipIndex, int crewIndex)
 	if (_SpacePort.size() > shipIndex)
 	{
 		_Populity.push_back(_SpacePort[shipIndex]._Crew[crewIndex]);
-		_Populity[_Populity.size() - 1]._currentPlace = "OutOf";
+		_Populity[_Populity.size() - 1]->_currentPlace = "OutOf";
 		_SpacePort[shipIndex]._Crew.erase(_SpacePort[shipIndex]._Crew.begin() + crewIndex);
 	}
 }

@@ -16,10 +16,11 @@ Man::~Man()
 #endif
 }
 
-
+/*
 Man::Man(const Man& pers)
-	:Man(pers._mass, pers._height, pers._name, pers._currentPlace, pers._currentPlanet, pers._currentSystem)
-{};
+	:Man(pers.Person::_mass, pers._height, pers._name, pers._currentPlace, pers._currentPlanet, pers._currentSystem)
+{
+};*/
 
 void Man::CheckGender()
 {

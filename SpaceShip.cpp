@@ -34,21 +34,25 @@ SpaceShip::~SpaceShip()
 void SpaceShip::AddMan(float mass, float height, std::string name)
 {
 	Man tmp(mass, height, name, _name, _currentPlanet, _currentSystem);
-	_Crew.push_back(tmp);
-	tmp.CheckGender();
-	_Crew.back().CheckGender();
+	//Man* tmsp = &tmp;	 
+	//tmsp->CheckGender();
+	_Crew.push_back(std::make_shared<Person>(tmp));
+	_Crew.back()->CheckGender();
 }
+
+
 void SpaceShip::AddWoman(float mass, float height, std::string name)
 {
 	Woman tmp(mass, height, name, _name, _currentPlanet, _currentSystem);
-	_Crew.push_back(tmp);
+	//Woman* tmsp = &tmp;
+	_Crew.push_back(std::make_shared<Woman>(tmp));
 }
 
-void SpaceShip::AddMan(Man person)
+void SpaceShip::AddMan(const Man &person)
 {
 	AddMan(person._mass, person._height, person._name);
 }
-void SpaceShip::AddWoman(Woman person)
+void SpaceShip::AddWoman(const Woman &person)
 {
 	AddWoman(person._mass, person._height, person._name);
 }
@@ -88,14 +92,13 @@ SpaceShip::SpaceShip(const SpaceShip& ship)
 {
 	for (auto& it : ship._Crew)
 	{
-		if (it._gender=="woman")
-		AddWoman(it._mass, it._height, it._name);
-		else if (it._gender=="man")
-		AddMan(it._mass, it._height, it._name);
+		if (it->_gender=="woman")
+		AddWoman(it->_mass, it->_height, it->_name);
+		else if (it->_gender=="man")
+		AddMan(it->_mass, it->_height, it->_name);
 		else std::cout << "SpaceShip copy C-tor doesnt work. Crew constaint non-binary person";
 	}
 }
-;
 
 /*
 void SpaceShip::Show()

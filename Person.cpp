@@ -2,7 +2,7 @@
 
 std::ostream& operator<<(std::ostream& os, const Person& person)
 {
-	return os <<"Gender: "<<person._gender<< "Name: " << person._name <<std::endl<< "Mass: " << person._mass << std::endl << "Height: " << person._height << std::endl <<std::endl;
+	return os <<"Gender: " << person._gender << std::endl << "Name: " << person._name << std::endl << "Mass: " << person._mass << std::endl << "Height: " << person._height << std::endl <<std::endl;
 }
 
 Person::Person(float mass, float height, std::string name, std::string currentPlace, std::string currentPlanet, std::string currentSystem)
