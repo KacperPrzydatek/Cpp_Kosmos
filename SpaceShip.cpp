@@ -82,7 +82,7 @@ void SpaceShip::ShowCrew()
 	{
 		std::cout << _currentPlanet<<std::endl;
 		std::cout << _name<<std::endl;
-		std::cout << it;
+		std::cout << *it;
 	}
 }
 

@@ -11,8 +11,10 @@ class Man : public Person
 	std::string _currentPlanet;
 	std::string _currentSystem;*/
 	std::string _gender;
+	int _numberOfHands;
 	Man(float mass, float height, std::string name, std::string currentPlace, std::string currentPlanet, std::string currentSystem);
 public:
+	void ChangeNumberOfHands(int newNumber);
 	Man(const Man& pers);
 	~Man();
 	//friend std::ostream& operator<<(std::ostream& os, const Person& person);

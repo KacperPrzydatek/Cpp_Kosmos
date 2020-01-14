@@ -93,9 +93,7 @@ void Planet::ShowPopulation()
 	{
 		std::cout << _name<<std::endl;
 		std::cout << " " << std::endl;
-		std::cout << (*it);
-		std::cout << it->_mass;
-		//std::cout << it->_height;
+		std::cout << *it;
 	}
 }
 
@@ -143,6 +141,8 @@ void Planet::MoveToShip(int shipIndex, int personIndex)
 			_SpacePort[_SpacePort.size() - 1].AddWoman(*_Populity[personIndex]);
 		else if (_Populity[personIndex]->_gender == "man")
 		_SpacePort[_SpacePort.size()-1].AddMan(*_Populity[personIndex]);
+		else
+			_SpacePort[_SpacePort.size() - 1].AddMan(*_Populity[personIndex]);
 
 		_Populity.erase(_Populity.begin()+personIndex);
 	}

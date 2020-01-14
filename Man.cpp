@@ -22,6 +22,11 @@ Man::Man(const Man& pers)
 {
 };*/
 
+void Man::ChangeNumberOfHands(int newNumber)
+{
+	_numberOfHands = newNumber;
+}
+
 void Man::CheckGender()
 {
 	std::cout << "Im Maaaan" << std::endl << "I said it without my mark!";
