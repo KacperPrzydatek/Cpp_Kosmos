@@ -9,6 +9,7 @@ class SpaceShip;
 class SolarSystem;
 class Person
 {
+protected:
 	float _mass;
 	float _height;
 	std::string _gender;
@@ -16,17 +17,12 @@ class Person
 	std::string _currentPlace;
 	std::string _currentPlanet;
 	std::string _currentSystem;	
-	
-	//Person();
-	//void Swap(Person& one, Person& two);
 public:
-	Person(float mass, float height, std::string name, std::string currentPlace, std::string currentPlanet, std::string currentSystem);
-	Person(const Person& pers);
-	~Person();
+
 	friend std::ostream& operator<<(std::ostream& os, const Person& person);
 	friend Planet;
 	friend SolarSystem;
 	friend SpaceShip;
 	
-	virtual void CheckGender();
+	virtual void CheckGender()=0;
 };

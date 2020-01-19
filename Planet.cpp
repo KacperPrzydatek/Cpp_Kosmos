@@ -99,16 +99,18 @@ void Planet::ShowPopulation()
 
 void Planet::AddMan(float mass, float height, std::string name)
 {
-	Man tmp(mass, height, name, "OutOf", _name, _currentSystem);
-	//std::make_shared<Man>(tmp);
-	//std::cout << mass;
-	_Populity.push_back(std::make_shared<Person>(tmp));
-	//std::cout<<_Populity[_Populity.size() - 1]->_gender;
+	//Man tmp(mass, height, name, "OutOf", _name, _currentSystem);
+	std::shared_ptr<Person> tmp;
+	tmp.reset(new Man(mass, height, name, "OutOf", _name, _currentSystem));
+	_Populity.push_back(tmp);
 }
 void Planet::AddWoman(float mass, float height, std::string name)
 {
-	Woman tmp(mass, height, name, "OutOf", _name, _currentSystem);
-	_Populity.push_back(std::make_shared<Person>(tmp));
+	std::shared_ptr<Person> tmp;
+	tmp.reset(new Woman(mass, height, name, "OutOf", _name, _currentSystem));
+	_Populity.push_back(tmp);
+	//Woman tmp(mass, height, name, "OutOf", _name, _currentSystem);
+	//_Populity.push_back(std::make_shared<Person>(tmp));
 }
 
 void Planet::AddShip(std::string name)
@@ -138,11 +140,11 @@ void Planet::MoveToShip(int shipIndex, int personIndex)
 	if (_SpacePort.size() > shipIndex)
 	{
 		if (_Populity[personIndex]->_gender == "woman")
-			_SpacePort[_SpacePort.size() - 1].AddWoman(*_Populity[personIndex]);
+			_SpacePort[_SpacePort.size() - 1].AddWoman(_Populity[personIndex]);
 		else if (_Populity[personIndex]->_gender == "man")
-		_SpacePort[_SpacePort.size()-1].AddMan(*_Populity[personIndex]);
+		_SpacePort[_SpacePort.size()-1].AddMan(_Populity[personIndex]);
 		else
-			_SpacePort[_SpacePort.size() - 1].AddMan(*_Populity[personIndex]);
+			_SpacePort[_SpacePort.size() - 1].AddMan((_Populity[personIndex]));
 
 		_Populity.erase(_Populity.begin()+personIndex);
 	}

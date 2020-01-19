@@ -33,38 +33,34 @@ SpaceShip::~SpaceShip()
 
 void SpaceShip::AddMan(float mass, float height, std::string name)
 {
-	Man tmp(mass, height, name, _name, _currentPlanet, _currentSystem);
-	//Man* tmsp = &tmp;	 
-	//tmsp->CheckGender();
+	std::shared_ptr<Person> tmp;
+	tmp.reset(new Man(mass, height, name, "OutOf", _name, _currentSystem));
+	_Crew.push_back(tmp);
+	/*Man tmp(mass, height, name, _name, _currentPlanet, _currentSystem);
 	_Crew.push_back(std::make_shared<Person>(tmp));
-	_Crew.back()->CheckGender();
+	_Crew.back()->CheckGender();*/
 }
 
 
 void SpaceShip::AddWoman(float mass, float height, std::string name)
 {
+	std::shared_ptr<Person> tmp;
+	tmp.reset(new Woman(mass, height, name, "OutOf", _name, _currentSystem));
+	_Crew.push_back(tmp);
+	/*
 	Woman tmp(mass, height, name, _name, _currentPlanet, _currentSystem);
 	//Woman* tmsp = &tmp;
-	_Crew.push_back(std::make_shared<Woman>(tmp));
+	_Crew.push_back(std::make_shared<Woman>(tmp));*/
 }
 
-void SpaceShip::AddMan(const Man &person)
+void SpaceShip::AddMan(std::shared_ptr<Person> person)
 {
-	AddMan(person._mass, person._height, person._name);
-}
-void SpaceShip::AddWoman(const Woman &person)
-{
-	AddWoman(person._mass, person._height, person._name);
+	AddMan(person->_mass, person->_height, person->_name);
 }
 
-void SpaceShip::AddMan(Person person)
+void SpaceShip::AddWoman(std::shared_ptr<Person> person)
 {
-	AddMan(person._mass, person._height, person._name);
-}
-
-void SpaceShip::AddWoman(Person person)
-{
-	AddWoman(person._mass, person._height, person._name);
+	AddWoman(person->_mass, person->_height, person->_name);
 }
 
 

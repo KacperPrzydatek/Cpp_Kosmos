@@ -1,9 +1,14 @@
 #include "Man.h"
 
 
-Man::Man(float mass, float height, std::string name, std::string currentPlace, std::string currentPlanet, std::string currentSystem)
-	:Person::Person(mass,height,name, currentPlace, currentPlanet, currentSystem)
+Man::Man(float mass, float height, std::string name, std::string currentPlace, std::string currentPlanet, std::string currentSystem) 
 {
+	_mass = mass;
+	_height = height;
+	_name = name;
+	_currentPlace = currentPlace;
+	_currentPlanet = currentPlanet;
+	_currentSystem = currentSystem;
 	_gender = "man";
 #if _DEBUG
 	std::cout << "Konstrukcja obiektu typu Person<M>" << std::endl;
@@ -18,13 +23,14 @@ Man::~Man()
 
 /*
 Man::Man(const Man& pers)
-	:Man(pers.Person::_mass, pers._height, pers._name, pers._currentPlace, pers._currentPlanet, pers._currentSystem)
+	:Man(pers._mass, pers._height, pers._name, pers._currentPlace, pers._currentPlanet, pers._currentSystem)
 {
-};*/
+};
+*/
 
-void Man::ChangeNumberOfHands(int newNumber)
+std::ostream& operator<<(std::ostream& os, const Man& person)
 {
-	_numberOfHands = newNumber;
+	return os << "Gender: " << person._gender << std::endl << "Name: " << person._name << std::endl << "Mass: " << person._mass << std::endl << "Height: " << person._height << std::endl << std::endl;
 }
 
 void Man::CheckGender()

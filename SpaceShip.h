@@ -11,7 +11,6 @@ class SpaceShip
 {
 	std::string _name;
 	std::vector<std::shared_ptr<Person>> _Crew;
-	//std::vector<Person> _Crew;
 	std::string _currentPlanet;
 	std::string _currentSystem;
 	void ShowWithoutCrew();
@@ -29,8 +28,6 @@ public:
 	//void Show();
 	void AddMan(float mass, float height, std::string name);
 	void AddWoman(float mass, float height, std::string name);
-	void AddMan(const Man &person);
-	void AddMan(Person person);
-	void AddWoman(const Woman &person);
-	void AddWoman(Person person);
+	void AddMan(std::shared_ptr<Person> person);
+	void AddWoman(std::shared_ptr<Person> person);
 };
